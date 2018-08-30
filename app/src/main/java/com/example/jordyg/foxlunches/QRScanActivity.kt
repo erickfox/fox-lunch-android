@@ -28,7 +28,7 @@ class QRScanActivity : AppCompatActivity(), Fallback.retryListener {
                     Toast.makeText(this, "Operación exitosa!", Toast.LENGTH_LONG).show()
                 }
                 else -> {
-                    Toast.makeText(this, "Ocurrio un error, vuelve a intentarlo", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "¡Ocurrió un error! Vuelve a intentarlo.", Toast.LENGTH_LONG).show()
                 }
             }
         }else{
@@ -42,7 +42,7 @@ class QRScanActivity : AppCompatActivity(), Fallback.retryListener {
                     //startActivity(intent)
                     startActivityForResult(intent, 1)
                 }else{
-                    Toast.makeText(this,"QR no compatible",Toast.LENGTH_LONG)
+                    Toast.makeText(this,"Código QR no compatible. Comunícate con RRHH.",Toast.LENGTH_LONG)
                 }
             }?: kotlin.run {
                 //error

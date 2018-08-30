@@ -28,18 +28,18 @@ class UserDetail : AppCompatActivity() {
 
     fun acredit() {
         val userID = this.currenUserID.let { it } ?: kotlin.run {
-            Toast.makeText(this, "Metadata del usuario incorrecta", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Información del colaborador incorrecta", Toast.LENGTH_SHORT).show()
             return
         }
 
         if (txtSaldo.text.isEmpty()) {
-            Toast.makeText(this, "Ingrese un saldo", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ingrese tickets", Toast.LENGTH_SHORT).show()
             return
         }
 
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Se acreditará " + txtSaldo.text + " al empleado " +  this.currentUser)
-        builder.setPositiveButton("Aceptar"){dialog, which ->
+        builder.setMessage("Se agregarán " + txtSaldo.text + " tickets a: \n" +  this.currentUser)
+        builder.setPositiveButton("ACEPTAR"){dialog, which ->
             progressBar.visibility = View.VISIBLE
             this.requestToApi(userID, txtSaldo.text.toString().toInt()){
                 setResult(it)
@@ -48,7 +48,7 @@ class UserDetail : AppCompatActivity() {
             }
         }
 
-        builder.setNegativeButton("Cancelar"){dialog,which ->
+        builder.setNegativeButton("CANCELAR"){dialog,which ->
 
         }
 
