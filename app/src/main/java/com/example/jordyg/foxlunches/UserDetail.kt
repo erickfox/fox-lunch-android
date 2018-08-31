@@ -15,11 +15,24 @@ class UserDetail : AppCompatActivity() {
     var currenUserID: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+       super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_detail)
         progressBar.visibility = View.GONE
+
+        var numberString = ""
         this.currentUser = intent.getStringExtra("nombre_usr")
-        this.currenUserID = intent.getStringExtra("id_usr").toInt()
+
+        //el id_User puede contener caracteres basuras del QR por lo que se debe limpiar
+        intent.getStringExtra("id_usr").forEach {
+            if (it.isDigit()){
+                numberString += it
+            }
+        }
+
+        if (!numberString.isEmpty()){
+            this.currenUserID = numberString.toInt()
+        }
+
         lblName.setText(this.currentUser)
         btnAcredit.setOnClickListener {
             this.acredit()
